@@ -1,0 +1,180 @@
+<script>
+// Задание 1
+var a = 1, b = 1, c, d;
+c = ++a; alert(c);           // 2 - сначала выполняется инкремент (переменная a), потом это значение присваивается c 
+d = b++; alert(d);           // 1 - сначала значение b присвается переменной d, а потом происходит увеличивание b на 1 
+c = (2+ ++a); alert(c);      // 5 - действия в скобках имеют наивысший приоритет, только после выполнения действия в них, значение присваивается переменной c
+d = (2+ b++); alert(d);      // 4 - действия в скобках имеют наивысший приоритет, только после выполнения действия в них, значение присваивается переменной d
+alert(a);                    // 3 - в строке 6 мы увеличили переменную a на 1
+alert(b);                    // 3 - в строке 7 мы увеличили переменную b на 1
+
+
+//Задание 2
+var a = 2;
+var x = 1 + (a *= 2); // 5 - сначала выполняется действие в скобках, потом к этому значению прибавляется 1 и результат присваивается x
+
+
+//Задание 3
+var a = +prompt("Введите число a");
+var b = +prompt("Введите число b");
+if(a >= 0 && b >= 0){
+    var c = a - b;
+    alert("Разница цифр - " + c)
+}
+else if(a < 0 && b <0) {
+    c = a * b;
+    alert("Произведение цифр - " + c)
+}
+else {
+    c = a + b;
+    alert("Сумма цифр - " + c)
+}
+
+
+//Задание 4 (вариант через switch)
+var a = Math.round(Math.random() * 15);
+alert(a);
+switch(a) {
+    case 0:
+        document.write("0<br>");
+    case 1:
+        document.write("1<br>");
+    case 2:
+        document.write("2<br>");
+    case 3:
+        document.write("3<br>");
+    case 4:
+        document.write("4<br>");
+    case 5:
+        document.write("5<br>");
+    case 6:
+        document.write("6<br>");
+    case 7:
+        document.write("7<br>");
+    case 8:
+        document.write("8<br>");
+    case 9:
+        document.write("9<br>");
+    case 10:
+        document.write("10<br>");
+    case 11:
+        document.write("11<br>");
+    case 12:
+        document.write("12<br>");
+    case 13:
+        document.write("13<br>");
+    case 14:
+        document.write("14<br>");
+    case 15:
+        document.write("15");
+        break;
+    default:
+        document.write("Ошибка");
+}
+
+
+//Задание 4 (вариант через рекурсию)
+var a = Math.round(Math.random() * 15);
+alert(a);
+function func(x) {
+    if (x == 16) {
+        return;
+    }
+    console.log(x);
+    func(x + 1);
+}
+
+func (a);
+
+//Задание 5
+function sum (a,b) {
+    return a + b;
+}
+
+function dif (a,b) {
+    return a - b;
+}
+
+function mult (a,b) {
+    return a * b;
+}
+
+function div (a,b) {
+    return a / b;
+}
+
+
+//Задание 6
+var a = +prompt("Введите первый аргумент"); 
+var b = +prompt("Введите второй аргумент");
+var oper = prompt("Какую операцию выполнить?\nsum - сумма, dif - разница, mult - умножение, div - деление")
+
+function mathOperation(arg1, arg2, operation) {
+    var x;
+    switch(operation) {
+        case "sum":
+            x = sum(arg1,arg2);
+            alert("Сумма чисел равна - " + x);
+            return x;
+            break;
+        case "dif":
+            x = dif(arg1,arg2);
+            alert("Разница чисел равна - " + x);
+            return x;
+            break;
+        case "mult":
+            x = mult(arg1,arg2);
+            alert("Произведение чисел равно - " + x);
+            return x;
+            break;
+        case "div":
+            x = div(arg1,arg2);
+            alert("Деление чисел равно - " + x);
+            return x;
+            break;
+        default:
+            alert("Некорректно введено название операции");
+    }
+}
+
+mathOperation(a,b,oper);
+
+
+//Задание 7
+var a = null;
+var b = 0;
+if (a == b){
+    alert("Null равен 0");
+}
+else if(a < b){
+    alert("Null меньше 0");
+}
+else if(a > b){
+    alert("Null больше 0");
+}
+else if(a <= b) {
+    alert("Null меньше или равен 0");
+}
+else if(a >= b) {
+    alert("Null больше или равен 0");
+}
+else {
+    alert("Null не равен, не больше и не меньше 0");
+}
+// Выражения истинны только при сравнении (>= или <=). При этом нестрогое равенство (< или >) или равенство (==) дает ложные результаты. Дополнительно прочитала, что сравнения (<= и >=) преобразуют null в число, рассматривая его как 0. Поэтому выражение null >= 0 истинно, а null > 0 ложно. Для нестрогого равенства == значений undefined и null действует особое правило: эти значения ни к чему не приводятся, они равны друг другу и не равны ничему другому. Поэтому и null == 0 тоже ложно. 
+
+
+//Задание 8
+function power(val, pow) {
+    if (pow == 1) {
+        return val;
+    }
+    return val * power (val, pow-1);
+}
+
+var a = +prompt("Введите число, которое необходимо возвести в степень");
+var b = +prompt("Введите степень числа");
+
+var x = power(a,b);
+alert(x);
+</script>
