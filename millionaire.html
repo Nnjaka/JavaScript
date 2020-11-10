@@ -1,0 +1,59 @@
+<script>
+    //3. На базе игры, созданной на уроке, реализовать игру «Кто хочет стать миллионером?»
+
+    var questions = [{
+        q: "Первый веб-браузер был создан сэром Тимом Бернерс-Ли и назывался\n",
+        a1: "1 - Internet Explorer\n",
+        a2: "2 - WorldWideWeb\n",
+        a3: "3 - Nexus\n",
+        a4: "4 - NCSA Mosaic\n",
+        correct: "2",
+        money: "1 000 рублей",
+        lastQuestion: 0
+    },
+    {
+        q: "Наиболее посещаемый сайт в мире - это...\n",
+        a1: "1 - google.com\n",
+        a2: "2 - wikipedia.org\n",
+        a3: "3 - vk.com\n",
+        a4: "4 - youtube.com\n",
+        correct: "1",
+        money: "10 000 рублей",
+        lastQuestion: 0
+    },
+    {
+        q: "Первый в мире сайт info.cern.ch появился...\n",
+        a1: "1 - 17 октября 1990 года\n",
+        a2: "2 - 16 декабря 1989 года\n",
+        a3: "3 - 6 августа 1991 года\n",
+        a4: "4 - 7 ноября 1988 года\n",
+        correct: "3",
+        money: "100 000 рублей",
+        lastQuestion: 1
+    }]
+
+    console.log(questions);
+
+    var answer, correctAnswer = 0;
+
+    for(question of questions){
+        answer = prompt(question.q + question.a1 + question.a2 + question.a3 + question.a4);
+        if (answer != question.correct){
+            alert("Вы проиграли и деньги сгорели. Количество верных ответов - " + correctAnswer);
+            break;
+        } 
+        else {
+            correctAnswer++;
+            if(question.lastQuestion){
+                alert("Поздравляем, это правильный ответ! Вы выиграли игру и " + question.money);
+            }
+            else {
+                var answer2 = prompt("Поздравляем, это правильный ответ! Вы выиграли " + question.money + "\nМы можем продолжить игру или Вы можете забрать выигрыш. Продолжаем играть? (Введите 'да' для продолжения. Для выхода из игры введите любое другое слово или символ)");
+                if (answer2 != "да"){
+                    alert("Очень жаль. Ваш выигрыш " + question.money);
+                    break;
+                }
+            }
+        }
+    }
+</script>
