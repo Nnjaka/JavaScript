@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+
+        var div = document.querySelector('div');
+        div.innerHTML = '<h1>Шахматная доска</h1>';
+        h = document.querySelector('h1');
+        h.style.fontSize = '40px';
+        h.style.textAlign = 'center';
+
+        function chess(){
+            var abc = ['','A','B','C','D','E','F','G','H',''],
+            blackFigure = ['8','♜','♞','♝','♛','♚','♝','♞','♜','8']
+            blackFigure2 = ['7','♟','♟','♟','♟','♟','♟','♟','♟','7'],
+            whiteFigure = ['2','♙','♙','♙','♙','♙','♙','♙','♙','2'],
+            whiteFigure2 = ['1','♖','♘','♗','♕','♔','♗','♘','♖','1'];
+            var table = document.createElement('table'), tr, td, i, j, k, c;
+
+            for(i = 0, k = 9; i < 10; i++, k--){
+                tr = document.createElement('tr');
+                table.append(tr);
+                for(j = 0; j < 10; j++){
+                    td = document.createElement('td');
+                    if ((i + j) % 2 == 0){
+                        td.style.backgroundColor = '#feffa8';
+                    } else {
+                        td.style.backgroundColor = '#7d5416';
+                    }
+                    if(j == 0){
+                        td.style.backgroundColor = '#fcfcd2';
+                    }
+                    if(j == 9){
+                        td.style.transform = 'rotate(180deg)';
+                        td.style.backgroundColor = '#fcfcd2';
+                    };
+                    switch(i){
+                        case 0:
+                            td.innerText = abc[j];
+                            td.style.transform = 'rotate(180deg)';
+                            td.style.backgroundColor = '#fcfcd2';
+                            break;
+                        case 1:
+                            td.innerText = blackFigure[j];
+                            break;
+                        case 2:
+                            td.innerText = blackFigure2[j];
+                            break;
+                        case 7:
+                            td.innerText = whiteFigure[j];
+                            break;
+                        case 8:
+                            td.innerText = whiteFigure2[j];
+                            break;
+                        case 9:
+                            td.innerText = abc[j];
+                            td.style.backgroundColor = '#fcfcd2';
+                            
+                            break;
+                        default:
+                            if (j == 0 || j == 9){
+                                td.innerText = k;
+                                break;
+                            } 
+                    }
+                    
+                    tr.append(td);
+                    td.style.textAlign = 'center';
+                    td.style.width = '50px';
+                    td.style.height = '50px';
+                    td.style.fontSize = '30px';
+                }
+            }
+            document.querySelector('div').append(table);
+            table.style.borderCollapse = 'collapse';
+            table.style.margin = '50px auto';
+        }
+        
+        chess();
+        
+    </script>
+</body>
+</html>
